@@ -1,0 +1,11 @@
+{
+  "accounts": 200,
+  "experiment_id": "manual-200",
+  "files": {
+    "assignments.parquet": "a672cda989b4cb8987b8ef6ce3466810b402a38ecf63d2b7fb35b88d80866f8e",
+    "eligible_accounts.parquet": "afd3def244f5353a43490ee0f1330515444843d00577105d545740bec42e1ff6"
+  },
+  "protocol_sha256": "d2b7c9654fb3523f9d4efd9729dc5b2953288721fbc0d0c38923c6889e2de289",
+  "scenario": "manual_fixture",
+  "seed": 1
+}

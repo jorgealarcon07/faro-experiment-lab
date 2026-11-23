@@ -6,8 +6,9 @@ WITH rec AS (
  min(window_end) window_end, min(available_at) available_at
  FROM faro_exp.outcome WHERE batch_hash=%(batch)s AND available_at<=%(as_of)s GROUP BY account_id
 ), unique_events AS (
- SELECT DISTINCT account_id,event_id,status,attempted_at,received_at FROM faro_exp.event
+ SELECT account_id,event_id,status,attempted_at,min(received_at) received_at FROM faro_exp.event
  WHERE batch_hash=%(batch)s AND received_at<=%(as_of)s
+ GROUP BY account_id,event_id,status,attempted_at
 ), attempts AS (
  SELECT account_id,count(*) attempts,count(*) FILTER (WHERE status='delivered') delivered,
  min(attempted_at) first_attempt,max(attempted_at) last_attempt,

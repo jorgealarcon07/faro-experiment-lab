@@ -7,6 +7,7 @@
     "outcome.json": "c72f5b699d0e355f3db53e7a33f9ad73760f3ecf7010cbcdfeab79c102528683",
     "run_manifest.json": "1487d5254fa733d04a0956252d945b007fad0fb0f05f2248fab9e17eaf2deab3"
   },
+  "generator": "6136684aab9607bf97293ff353fdcdf6fea3411d6a2877241c86d25320041ff4",
   "protocol": "d2b7c9654fb3523f9d4efd9729dc5b2953288721fbc0d0c38923c6889e2de289",
   "version": "1.0"
 }

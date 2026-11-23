@@ -22,7 +22,7 @@ def assess(itt, integrity, cut, p):
         raise ValueError("El corte es anterior a la inscripción")
     joined = (itt.outcome_rows == 1) & (itt.recorded_rows == 1)
     arm = arm_counts(itt.variant)
-    logged = {a: int(itt.loc[itt.logged_arm == a, "recorded_rows"].sum()) for a in ["C", "T"]}
+    logged = integrity["recorded_by_arm"]
     complete = arm_counts(itt.loc[joined, "variant"])
 
     def ratio(count):

@@ -78,6 +78,8 @@ def frame_contract(name, frame, experiment):
     if set(frame) != set(spec) or len(frame.columns) != len(spec):
         raise ValueError(f"Columnas incompatibles en {name}")
     frame = frame[list(spec)].copy()
+    if frame.empty:
+        return frame
     for col, rules in spec.items():
         values = frame[col]
         if values.isna().any():
@@ -132,7 +134,10 @@ def load_bundle(path, kinds):
         if f.suffix == ".parquet":
             data = pd.read_parquet(f)
         else:
-            data = pd.read_json(f, lines=True, convert_dates=False)
+            if f.stat().st_size <= 1 and not f.read_bytes().strip():
+                data = pd.DataFrame(columns=list(schema(k)["properties"]))
+            else:
+                data = pd.read_json(f, lines=True, convert_dates=False, dtype=False)
         frames[k] = frame_contract(k, data, manifest["experiment_id"])
     return manifest, frames
 

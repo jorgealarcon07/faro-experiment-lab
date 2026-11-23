@@ -1,0 +1,27 @@
+services:
+  db:
+    image: postgres:17
+    environment:
+      POSTGRES_DB: faro_lab
+      POSTGRES_USER: faro_exp
+      POSTGRES_PASSWORD: ${PGPASSWORD:?Define PGPASSWORD locally}
+    volumes: ["labdb:/var/lib/postgresql/data"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U faro_exp"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+  app:
+    build: .
+    environment:
+      PGHOST: db
+      PGDATABASE: faro_lab
+      PGUSER: faro_exp
+      PGPASSWORD: ${PGPASSWORD:?Define PGPASSWORD locally}
+    volumes: ["laboutput:/app/local"]
+    depends_on:
+      db:
+        condition: service_healthy
+volumes:
+  labdb:
+  laboutput:

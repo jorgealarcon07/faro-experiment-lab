@@ -4,13 +4,15 @@ import numpy as np
 import pandas as pd
 import yaml
 
-from .io import bundle, clock, encoded, load_bundle, protocol, sha
+from .io import bundle, clock, encoded, load_bundle, protocol, read, sha
 
 FAULTS = ("clean", "loss", "switch", "duplicates", "clock", "assignment_loss", "conflict")
 
 
 def config(name):
     cfg = yaml.safe_load(Path("config/scenarios.yaml").read_text(encoding="utf8"))
+    if sha(encoded(cfg)) != read("contracts.lock.json")["generator"]:
+        raise ValueError("La configuración del simulador difiere de la versión registrada")
     return cfg, cfg["scenarios"][name]
 
 
@@ -45,7 +47,13 @@ def enroll(path, name, n=None, experiment=None):
     )
     return bundle(
         path,
-        {"experiment_id": experiment, "scenario": name, "seed": s["seed"], "accounts": n},
+        {
+            "experiment_id": experiment,
+            "scenario": name,
+            "seed": s["seed"],
+            "accounts": n,
+            "generator_sha256": sha(encoded(cfg)),
+        },
         {"eligible": accounts, "assignment": assignments},
     )
 
@@ -97,12 +105,16 @@ def observe(enrollment, path, fault="clean"):
     elif fault == "switch":
         a.loc[0, "variant"] = "T" if a.loc[0, "variant"] == "C" else "C"
     elif fault == "duplicates":
-        events = pd.concat([events, events], ignore_index=True)
+        retries = events.copy()
+        retries["received_at"] += pd.Timedelta(hours=3)
+        events = pd.concat([events, retries], ignore_index=True)
     elif fault == "clock":
         out.loc[0, "available_at"] = a.loc[0, "assigned_at"] - pd.Timedelta(days=1)
     elif fault == "assignment_loss":
         a = a[~(treated & (a.account_id % 3 == 0))]
     elif fault == "conflict":
+        if d.empty:
+            raise ValueError("El caso de conflicto requiere al menos una cuenta tratada")
         wrong = d.iloc[[0]].copy()
         wrong["status"] = "failed" if wrong.iloc[0].status == "delivered" else "delivered"
         events = pd.concat([events, wrong], ignore_index=True)

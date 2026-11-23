@@ -121,11 +121,18 @@ def analytic_table(conn, experiment, batch, as_of):
     ).fetchone()[0]
     receipts, conflicts = conn.execute(
         """SELECT coalesce(sum(n),0)::bigint, count(*) FILTER(WHERE versions>1)
-          FROM (SELECT event_id,count(*) n,count(DISTINCT (account_id,status,attempted_at,received_at)) versions
+          FROM (SELECT event_id,count(*) n,count(DISTINCT (account_id,status,attempted_at)) versions
           FROM faro_exp.event WHERE batch_hash=%(batch)s AND received_at<=%(as_of)s GROUP BY event_id) grouped""",
         args,
     ).fetchone()
+    logged = dict(
+        conn.execute(
+            "SELECT variant,count(*) FROM faro_exp.recorded WHERE batch_hash=%s GROUP BY variant",
+            (batch,),
+        ).fetchall()
+    )
     return frame, {
+        "recorded_by_arm": {arm: logged.get(arm, 0) for arm in ("C", "T")},
         "orphan_rows": extra,
         "event_id_conflicts": conflicts,
         "raw_event_rows": receipts,
@@ -136,7 +143,7 @@ def fingerprint(frame):
     # SQL orders by ID. Explicit null and timestamp formatting are independent of OS newlines.
     return sha(
         frame.to_csv(
-            index=False, na_rep="NULL", date_format="%Y-%m-%dT%H:%M:%SZ", lineterminator="\n"
+            index=False, na_rep="NULL", date_format="%Y-%m-%dT%H:%M:%S.%fZ", lineterminator="\n"
         ).encode()
     )
 

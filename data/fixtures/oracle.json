@@ -1,0 +1,15 @@
+{
+  "attempts_treatment": 100,
+  "cash_cop": 1400,
+  "complaints_control": 1,
+  "complaints_treatment": 1,
+  "data_kind": "synthetic",
+  "delivered_treatment": 80,
+  "effect": 0.03,
+  "license": "CC0-1.0",
+  "lost_treatment": 50,
+  "n_control": 100,
+  "n_treatment": 100,
+  "paid_control": 20,
+  "paid_treatment": 23
+}
