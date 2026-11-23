@@ -2,7 +2,7 @@
 
 ## Preparar e inscribir
 
-Use un directorio de trabajo por experimento y una base dedicada. Configure el entorno descrito en el [README](../README.md). `faro-exp power` y `faro-exp enroll` funcionan localmente. La etapa `register` inicializa el esquema, valida elegibilidad y asignación y entrega `registered` o `replay`. Cada inscripción es inmutable. Antes de procesar outcomes confirme que el SHA de inscripción del paquete observado coincide con el que se registró.
+Use un directorio de trabajo por experimento y una base dedicada. Configure el entorno descrito en el [README en español](../README.es.md). `faro-exp power` y `faro-exp enroll` funcionan localmente. La etapa `register` inicializa el esquema, valida elegibilidad y asignación y entrega `registered` o `replay`. Cada inscripción es inmutable. Antes de procesar outcomes confirme que el SHA de inscripción del paquete observado coincide con el que se registró.
 
 Con el esquema inicializado, un administrador puede aplicar `psql -v ON_ERROR_STOP=1 -f scripts/access.sql`. El grupo NOLOGIN `faro_exp_reader` obtiene SELECT sobre la vista `faro_exp.decisions`. Se asigna a los usuarios que solo deben ver informes. Reserve escritura y la CLI de trazas para operadores autorizados. La aceptación comprueba en PostgreSQL que el lector puede consultar una decisión y recibe denegación al leer outcomes crudos. [SQL de privilegios](../scripts/access.sql)
 

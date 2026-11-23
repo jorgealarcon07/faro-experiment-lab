@@ -1,5 +1,7 @@
 # Caso de estudio · Un recordatorio adicional bajo prueba
 
+[English](CASE_STUDY.md)
+
 **Decisión.** Una responsable de operaciones quiere saber si enviar un recordatorio adicional adelanta suficientes pagos para justificar el costo y el posible aumento de quejas. El equipo de datos necesita distinguir entre un recordatorio que funciona y un sistema que observa mejor a quienes recibieron el mensaje. [Informe interactivo](reports/release/index.html)
 
 ## Cómo se planteó el ensayo
@@ -22,4 +24,4 @@ En 1.000 réplicas A/A el método rechazó cero en 46 ocasiones, **4,6 %** con e
 
 La decisión de laboratorio depende de la definición de pago, la captura completa del resultado y el horizonte de 14 días. Un pago adelantado podría haberse realizado de todos modos más tarde. La simulación permite medir si el procedimiento se comporta como se diseñó. Para decidir una política comercial seguirían haciendo falta un piloto autorizado, costos reales y una evaluación de seguimiento.
 
-[Video narrado](assets/web/walkthrough.mp4) · [Captura principal](assets/web/decision.png) · [Incidente](assets/web/incidente.png) · [Calibración](assets/web/calibracion.png) · [Guía de ejecución](README.md).
+[Video narrado](assets/web/walkthrough.mp4) · [Captura principal](assets/web/decision.png) · [Incidente](assets/web/incidente.png) · [Calibración](assets/web/calibracion.png) · [Guía de ejecución](README.es.md).
