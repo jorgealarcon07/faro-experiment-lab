@@ -12,6 +12,8 @@ Construí un ensayo A/B que mide pagos a 14 días, costo de envío y quejas. Ope
 
 [Abrir el informe en el navegador](https://jorgealarcon07.github.io/jorgealarcon07/experimento-de-recordatorios/) · [Leer el caso de estudio](CASO_DE_ESTUDIO.md) · [Ver la arquitectura](docs/ARQUITECTURA.md)
 
+La demo genera `index.html` e `index.en.html` con las mismas decisiones y descargas. En una entrega con inventario, `faro-exp report --out reports/release` regenera la vista inglesa como archivo derivado y conserva los archivos auditados.
+
 ![Decisión del ensayo con la diferencia de pagos y el límite de quejas](assets/web/decision.png)
 
 ## Cómo se construyó

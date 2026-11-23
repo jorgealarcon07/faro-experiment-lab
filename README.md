@@ -10,7 +10,7 @@ I built an A/B experiment for a fictional operations team. It measures payment w
 
 **Measured result.** In a favorable scenario with 20,000 simulated accounts, the difference was **+3.30 percentage points** in the group assigned to receive the reminder (95% CI **+2.16 to +4.44**). Removing 3,250 outcomes invalidated the analysis and blocked the recommendation.
 
-[Case study](CASE_STUDY.md) · [Open interactive report (Spanish)](https://jorgealarcon07.github.io/jorgealarcon07/experimento-de-recordatorios/) · [Architecture (Spanish)](docs/ARQUITECTURA.md)
+[Case study](CASE_STUDY.md) · [Open interactive report](https://jorgealarcon07.github.io/jorgealarcon07/experimento-de-recordatorios/index.en.html) · [Architecture (Spanish)](docs/ARQUITECTURA.md)
 
 ![Experiment decision from the Spanish report, with the payment effect and complaint limit](assets/web/decision.png)
 
@@ -35,3 +35,5 @@ faro-exp validate --out local/demo
 ```
 
 Open `local/demo/index.html`. The [full guide in Spanish](README.es.md) covers the isolated PostgreSQL runner, the missing-outcome incident and the Monte Carlo replay.
+
+Both report languages share the same evidence files. The [saved English report](reports/release/index.en.html) also opens from a local checkout.

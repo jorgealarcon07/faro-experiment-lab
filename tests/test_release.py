@@ -1,9 +1,11 @@
 from pathlib import Path
+from shutil import copyfile
 
 import numpy as np
 import pandas as pd
 import pytest
 
+from faro_exp.cli import main
 from faro_exp.demo import validate
 from faro_exp.inference import gates, interval, srm
 from faro_exp.io import protocol, read
@@ -18,6 +20,18 @@ def test_release_contracts_and_incident():
     assert cases["loss"]["checks"]["srm_p_registered"] >= 0.001
     assert cases["conflict"]["estimates"] is None
     assert cases["early"]["comparison"] is None
+
+
+def test_english_report_preserves_historical_inventory(tmp_path):
+    inventory = read(OUT / "inventory.json")
+    for name in (*inventory, "inventory.json"):
+        copyfile(OUT / name, tmp_path / name)
+
+    assert main(["report", "--out", str(tmp_path)]) == 0
+    validate(tmp_path)
+    html = (tmp_path / "index.en.html").read_text(encoding="utf-8")
+    assert '<html lang="en">' in html
+    assert 'href="decisions.csv"' in html
 
 
 @pytest.mark.parametrize("scenario", ["aa", "benefit", "harm", "complaint", "mde"])

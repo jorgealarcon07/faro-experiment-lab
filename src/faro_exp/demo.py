@@ -9,6 +9,7 @@ from .analysis import analyze
 from .calibration import calibrate
 from .io import file_hash, log, protocol, read, save, validate_document
 from .report import render
+from .report_language import REPORT_FILES
 from .simulator import enroll, observe
 
 EARLY = "2026-01-08T00:00:00Z"
@@ -166,5 +167,5 @@ def clean(out):
     out = Path(out)
     if read(out / "owner.json") != {"faro_exp": "report"}:
         raise ValueError("Directorio de reporte incompatible")
-    for name in (*ARTIFACTS, "inventory.json", "owner.json"):
+    for name in (*ARTIFACTS, REPORT_FILES["en"], "inventory.json", "owner.json"):
         (out / name).unlink(missing_ok=True)

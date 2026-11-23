@@ -70,9 +70,12 @@ def main(argv=None):
                     save(a.out, {"record": record, "manifest": manifest})
                     log("decision", state=record["state"], run_id=record["run_id"], storage=action)
         elif a.cmd == "report":
-            from .report import render
+            from .report import render, render_pages
 
-            render(a.out)
+            if (a.out / "inventory.json").exists():
+                render_pages(a.out, languages=("en",))
+            else:
+                render(a.out)
         elif a.cmd in ("power", "calibrate"):
             from .inference import power_plan
             from .io import protocol
