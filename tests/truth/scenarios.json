@@ -1,0 +1,28 @@
+{
+  "description": "ITT poblacional de la simulación. Solo para evaluación.",
+  "baseline_payment": 0.2,
+  "mean_delivery_treatment": 0.75,
+  "baseline_complaint": 0.008,
+  "itt": {
+    "aa": [
+      0,
+      0
+    ],
+    "benefit": [
+      0.03,
+      0
+    ],
+    "harm": [
+      -0.02,
+      0
+    ],
+    "complaint": [
+      0.03,
+      0.012
+    ],
+    "mde": [
+      0.02,
+      0
+    ]
+  }
+}

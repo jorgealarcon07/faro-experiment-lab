@@ -7,7 +7,7 @@ import psycopg
 
 from . import database as db
 from .analysis import analyze
-from .io import log, save
+from .io import clock, log, save
 
 
 def main(argv=None):
@@ -57,6 +57,8 @@ def main(argv=None):
                 m = observe(a.enrollment, a.out, a.fault)
             log(a.cmd, experiment=m["experiment_id"])
         elif a.cmd in ("register", "analyze", "trace"):
+            if a.cmd == "analyze":
+                a.as_of = clock(a.as_of)
             with db.connect() as conn:
                 if a.cmd == "register":
                     db.initialize(conn)
