@@ -1,10 +1,24 @@
-# Faro · Evaluación de recordatorios de pago
+# Experimento de recordatorios
 
-¿Conviene añadir un recordatorio a la comunicación habitual? Faro asigna cuentas sintéticas al azar y evalúa pagos a 14 días, costo de los intentos y quejas. El sistema entrega una decisión, los conteos que la justifican y un historial si hubo que reparar datos. [Abrir el informe](reports/release/index.html) · [Caso de estudio](CASO_DE_ESTUDIO.md) · [Video narrado en inglés](assets/web/walkthrough.mp4)
+**Data Science** · Experimento simulado · COP · [Portafolio de Jorge Alarcón](https://github.com/jorgealarcon07#proyectos)
 
-**Resultado del escenario beneficioso.** En 20.000 cuentas simuladas, pagaron 2.315 de 9.958 cuentas tratadas y 2.003 de 10.042 controles. La diferencia por asignación fue **+3,30 puntos porcentuales**, con IC 95 % **[+2,16, +4,44]**. El aumento de quejas quedó bajo el margen predefinido y el límite inferior de caja fue positivo. La recomendación de laboratorio fue `ship`. Una copia del mismo experimento con 3.250 resultados de tratamiento perdidos quedó `invalid`. [Decisiones y denominadores](reports/release/cases.json) · [Manifiestos](reports/release/manifests.json)
+![Python](assets/stack/python.svg) ![SciPy](assets/stack/scipy.svg) ![statsmodels](assets/stack/statsmodels.svg) ![SQL · PostgreSQL](assets/stack/postgresql.svg)
 
-**English brief.** A reproducible experiment pipeline for a capacity-conscious payments team. Immutable assignment, event-time and arrival-time checks, intention-to-treat estimation and a complaint guardrail determine whether the simulated evidence supports an extra reminder. A fixed-horizon study and 5,000 independent replications distinguish an operational recommendation from a statistically detectable effect. All accounts and commercial assumptions are synthetic. [English walkthrough transcript](assets/web/walkthrough.en.txt)
+## ¿Vale la pena enviar otro recordatorio de pago?
+
+Construí un ensayo A/B que mide pagos a 14 días, costo de envío y quejas. Operaciones recibe una recomendación y puede ver qué datos la sustentan. En el escenario favorable, el intervalo del 95 % para la diferencia en pagos fue de +2,16 a +4,44 puntos. El sistema también retiene el envío cuando las quejas exceden el margen o la medición está incompleta. La simulación sirve para evaluar la decisión que produciría el método.
+
+**Resultado medido.** En el escenario favorable de 20.000 cuentas simuladas, el grupo asignado al recordatorio pagó 3,30 puntos porcentuales más. Al retirar 3.250 resultados, el sistema bloqueó la recomendación.
+
+[Abrir el informe en el navegador](https://jorgealarcon07.github.io/jorgealarcon07/experimento-de-recordatorios/) · [Leer el caso de estudio](CASO_DE_ESTUDIO.md) · [Ver la arquitectura](docs/ARQUITECTURA.md)
+
+![Decisión del ensayo con la diferencia de pagos y el límite de quejas](assets/web/decision.png)
+
+## Cómo se construyó
+
+Fijé la asignación aleatoria, los umbrales y la ventana de medición antes de analizar los pagos. La comparación incluye a las cuentas cuyo mensaje no se entregó. Usé SciPy y statsmodels para evaluar la incertidumbre y contrasté el procedimiento con 5.000 réplicas simuladas.
+
+[Protocolo previo](experiment_protocols/v1.json) · [Decisiones por escenario](reports/release/decisions.csv) · [Calibración y potencia](docs/CALIBRACION.md)
 
 ## Recorrido para una entrevista
 
