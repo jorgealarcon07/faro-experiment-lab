@@ -1,0 +1,13 @@
+# Generator assumptions. Analysis reads only the frozen protocol and observed tables.
+risk_high_probability: 0.5
+payment_low_risk: 0.28
+payment_high_risk: 0.12
+delivery_low_risk: 0.95
+delivery_high_risk: 0.55
+complaint_base: 0.008
+scenarios:
+  aa:        {seed: 20260401, itt_payment: 0.00, itt_complaint: 0.000}
+  benefit:   {seed: 20260402, itt_payment: 0.03, itt_complaint: 0.000}
+  harm:      {seed: 20260403, itt_payment: -0.02, itt_complaint: 0.000}
+  complaint: {seed: 20260404, itt_payment: 0.03, itt_complaint: 0.012}
+  mde:       {seed: 20260405, itt_payment: 0.02, itt_complaint: 0.000}

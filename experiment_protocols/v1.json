@@ -1,0 +1,40 @@
+{
+  "version": "1.0",
+  "namespace": "faro_reminders_cop_synthetic",
+  "data_kind": "synthetic",
+  "unit": "eligible_account",
+  "assignment": "bernoulli",
+  "allocation": 0.5,
+  "planned_accounts": 20000,
+  "as_at": "2026-01-01T00:00:00Z",
+  "horizon_days": 14,
+  "grace_days": 2,
+  "primary": "full_payment_within_14_days",
+  "guardrail": "complaint_within_14_days",
+  "alpha": 0.05,
+  "srm_alpha": 0.001,
+  "min_effect": 0.01,
+  "max_complaint_increase": 0.005,
+  "balance_cop": 50000,
+  "cost_per_attempt_cop": 100,
+  "cost_sensitivity_cop": [
+    0,
+    100,
+    250
+  ],
+  "interval": "newcomb",
+  "power_base": 0.2,
+  "power_delta": 0.02,
+  "power_target": 0.8,
+  "replicates": 1000,
+  "mc_root_seed": 20261122,
+  "decision": "ship iff lower payment difference > 0.01 and lower net cash > 0 and upper complaint difference < 0.005 after validity and maturity",
+  "aa_band": [
+    0.03,
+    0.07
+  ],
+  "coverage_band": [
+    0.92,
+    0.98
+  ]
+}
