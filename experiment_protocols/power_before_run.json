@@ -1,0 +1,11 @@
+{
+  "alpha": 0.05,
+  "alternative": 0.22,
+  "approx_power_at_planned_n": 0.9348618247291174,
+  "baseline": 0.2,
+  "expected_per_arm": 10000.0,
+  "method": "two-sided normal approximation, arcsine effect size, balanced arms",
+  "per_arm_required": 6508,
+  "planned_n": 20000,
+  "target_power": 0.8
+}

@@ -1,0 +1,12 @@
+{
+  "files": {
+    "assignment.json": "c59730b1622ffff57c15973c8b285a79fec596c1dcc74509d88d7dd270bcbfcc",
+    "decision_record.json": "f402989af042f9a2791cfcae3f70fc68a22e55e035325277ce987e04dfc99b60",
+    "eligible.json": "413fcd15b892f33e3056ba2a0406b5daab16589ecca1010253ec00df59a23b21",
+    "event.json": "98d2ce3800b3ff847cbd801d7638c85f95b55f4c7f0d739e9677bca282bde1ce",
+    "outcome.json": "c72f5b699d0e355f3db53e7a33f9ad73760f3ecf7010cbcdfeab79c102528683",
+    "run_manifest.json": "1487d5254fa733d04a0956252d945b007fad0fb0f05f2248fab9e17eaf2deab3"
+  },
+  "protocol": "d2b7c9654fb3523f9d4efd9729dc5b2953288721fbc0d0c38923c6889e2de289",
+  "version": "1.0"
+}

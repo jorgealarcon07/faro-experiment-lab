@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "run_id": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "experiment_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 120
+    },
+    "state": {
+      "enum": [
+        "pending",
+        "invalid",
+        "ship",
+        "hold"
+      ]
+    },
+    "reasons": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 120
+      }
+    },
+    "as_of": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "checks": {
+      "type": "object"
+    },
+    "estimates": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "comparison": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "segments": {
+      "type": "array"
+    },
+    "role": {
+      "const": "operaciones simuladas"
+    }
+  },
+  "required": [
+    "run_id",
+    "experiment_id",
+    "state",
+    "reasons",
+    "as_of",
+    "checks",
+    "estimates",
+    "comparison",
+    "segments",
+    "role"
+  ],
+  "additionalProperties": false
+}

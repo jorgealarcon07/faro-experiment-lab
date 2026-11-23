@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "experiment_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 120
+    },
+    "account_id": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "event_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 120
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "delivered",
+        "failed"
+      ]
+    },
+    "attempted_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "received_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "experiment_id",
+    "account_id",
+    "event_id",
+    "status",
+    "attempted_at",
+    "received_at"
+  ],
+  "additionalProperties": false
+}

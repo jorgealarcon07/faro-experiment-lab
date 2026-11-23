@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "experiment_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 120
+    },
+    "account_id": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "variant": {
+      "type": "string",
+      "enum": [
+        "C",
+        "T"
+      ]
+    },
+    "probability": {
+      "type": "number"
+    },
+    "assigned_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "experiment_id",
+    "account_id",
+    "variant",
+    "probability",
+    "assigned_at"
+  ],
+  "additionalProperties": false
+}

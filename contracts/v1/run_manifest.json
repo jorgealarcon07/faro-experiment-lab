@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "run_id": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "git_sha": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "contract_version": {
+      "const": "1.0"
+    },
+    "dataset_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "source_namespace": {
+      "const": "faro_reminders_cop_synthetic"
+    },
+    "data_kind": {
+      "const": "synthetic"
+    },
+    "seed": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "as_of": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "rows": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "enrollment_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "protocol_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "parent_run": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "itt_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "environment": {
+      "type": "object"
+    }
+  },
+  "required": [
+    "run_id",
+    "git_sha",
+    "contract_version",
+    "dataset_sha256",
+    "source_namespace",
+    "data_kind",
+    "seed",
+    "as_of",
+    "rows",
+    "enrollment_sha256",
+    "protocol_sha256",
+    "parent_run",
+    "itt_sha256",
+    "environment"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "experiment_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 120
+    },
+    "account_id": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "paid": {
+      "type": "boolean"
+    },
+    "complained": {
+      "type": "boolean"
+    },
+    "window_end": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "available_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "experiment_id",
+    "account_id",
+    "paid",
+    "complained",
+    "window_end",
+    "available_at"
+  ],
+  "additionalProperties": false
+}

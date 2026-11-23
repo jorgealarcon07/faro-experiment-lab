@@ -1,0 +1,6 @@
+* text=auto eol=lf
+*.parquet binary
+*.png binary
+*.mp4 binary
+reports/release/** -text
+data/fixtures/** -text

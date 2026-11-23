@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "experiment_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 120
+    },
+    "account_id": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "balance_cop": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "high_risk": {
+      "type": "boolean"
+    },
+    "measured_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "eligible": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "experiment_id",
+    "account_id",
+    "balance_cop",
+    "high_risk",
+    "measured_at",
+    "eligible"
+  ],
+  "additionalProperties": false
+}
