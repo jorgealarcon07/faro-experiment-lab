@@ -1,0 +1,17 @@
+{
+  "concurrent_submissions": [
+    "published",
+    "replay"
+  ],
+  "database_host_mode": "loopback",
+  "decision_sha256": "a73572f25f6f4bacdc600e04adb4a54efac9960370b20bb450bc91bdddc2cfa9",
+  "manual_fixture_run": "8404f2923f08b4a3af69c44a2a0a670a7be72cc7997be6774f13cf3ba9fee54e",
+  "monte_carlo_csv_sha256": "b0904b40fbf3bb50fe81e51440bdc5f8d90452b82a0e8d8557b4e77bec90ed2a",
+  "postgresql": "17.12",
+  "python": "3.12.14",
+  "reader_can_read_decision": true,
+  "reader_denied_raw": true,
+  "same_5000_replicas": true,
+  "same_decisions": true,
+  "same_itt_tables": true
+}

@@ -1,0 +1,10 @@
+{
+  "corrected_run": "9664cf62626002efc2127e09181ad0921f5e7702f444fb61342ffa244f563743",
+  "duplicated_receipts_same_itt": true,
+  "identical_replay": true,
+  "incident_run": "f029cbd49319c04fe4e51050c9c379e3ed257d9c7438cd148a2ca9d1f4a81d47",
+  "monte_carlo_seconds": 0.21657849999974133,
+  "postgresql": "17.12",
+  "replicates_total": 5000,
+  "scenarios": 5
+}

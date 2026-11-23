@@ -1,0 +1,7 @@
+{
+  "elapsed_seconds": 25.62130160000015,
+  "excludes": "PostgreSQL server, installation, capture and packaging",
+  "input_bytes": 25148036,
+  "peak_python_rss_mib": 224.45703125,
+  "sampling_seconds": 0.1
+}
